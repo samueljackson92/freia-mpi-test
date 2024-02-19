@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Verify options and abort if there is a error
+#$ -w e
+
+# Choose parallel environment
+# -pe openmpi 32
+# -l select:2
+
+
+# Specify the job name in the queue system
+#$ -N ramp-test
+
+# Start the script in the current working directory
+#$ -cwd
+
+# Time requirements
+#$ -l h_rt=120:00:00
+#$ -l s_rt=120:00:00
+
+# Specify where standard output and error are stored
+##$ -o ramp-test.out
+##$ -e ramp-test.err
+
+source ~/envs/fmast/bin/activate
+mpirun -np 4 python3 main.py -s mini_campaign.csv -n ip
+# mpiexec -n 2 -np 32 hostname
+# mpirun -np 4 dask-mpi --scheduler-file ~/dask-scheduler.json --scheduler-port 4321
