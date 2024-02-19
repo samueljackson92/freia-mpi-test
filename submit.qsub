@@ -4,12 +4,10 @@
 #$ -w e
 
 # Choose parallel environment
-# -pe openmpi 32
-# -l select:2
-
+# -pe openmpi 4
 
 # Specify the job name in the queue system
-#$ -N ramp-test
+#$ -N mpi-test
 
 # Start the script in the current working directory
 #$ -cwd
@@ -19,10 +17,11 @@
 #$ -l s_rt=120:00:00
 
 # Specify where standard output and error are stored
-##$ -o ramp-test.out
-##$ -e ramp-test.err
+##$ -o mpi-test.out
+##$ -e mpi-test.err
 
+# Activate your environment here!
 source ~/envs/fmast/bin/activate
+
+# Run script
 mpirun -np 4 python3 main.py -s mini_campaign.csv -n ip
-# mpiexec -n 2 -np 32 hostname
-# mpirun -np 4 dask-mpi --scheduler-file ~/dask-scheduler.json --scheduler-port 4321

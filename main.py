@@ -1,6 +1,10 @@
+from dask_mpi import initialize
+initialize()
+
 import argparse
 import pyuda
 from dask.distributed import Client, as_completed
+
 
 class MASTClient:
     def __init__(self) -> None:
@@ -21,10 +25,10 @@ class MASTClient:
         return signal
 
 
-def get_signal(shot: int, name: str):
+def get_signal(shot: int, name: str) -> str:
     mast_client = MASTClient()
     signal = mast_client.get_signal(shot, name)
-    return signal
+    return signal.name
 
 def read_shot_file(shot_file: str) -> list[int]:
     with open(shot_file) as f:
@@ -44,7 +48,7 @@ def main():
     args = parser.parse_args()
     shots = read_shot_file(args.shot_file)
 
-    client = Client(scheduler_file='/home/rt2549/dask-scheduler.json')
+    client = Client()
 
     tasks = []
     for shot in shots:
@@ -52,8 +56,8 @@ def main():
         task = client.submit(get_signal, shot, args.name)
 
     for task in as_completed(tasks):
-        signal = task.result()
-        print(signal.name)
+        name = task.result()
+        print(name)
     
 
 if __name__ == "__main__":
