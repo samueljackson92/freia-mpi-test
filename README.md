@@ -8,7 +8,12 @@ This code is using the environment venv defined here:
 
 You will need to change this in the `submit.job`
 
-To submit the job run:
+To submit s single job run:
 ```sh
 qsub submit.job
+```
+
+To submit many jobs run:
+```sh
+./do_submit.sh
 ```
