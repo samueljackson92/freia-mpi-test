@@ -4,7 +4,7 @@
 #$ -w e
 
 # Choose parallel environment
-# -pe openmpi 4
+# -pe openmpi 1
 
 # Specify the job name in the queue system
 #$ -N mpi-test
@@ -21,7 +21,8 @@
 ##$ -e mpi-test.err
 
 # Activate your environment here!
-source ~/envs/fmast/bin/activate
+# source ./mpi-test/bin/activate
+module load python/3.9
 
 # Run script
-mpirun -np 4 python3 main.py -s mini_campaign.csv -n ip
+mpirun -np 16 python3 main.py -s shot_files/M9.csv -n rba -e 10000 --image

@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/home/rt2549/git/ramp-test/main.py", line 87, in <module>
+    main()
+  File "/home/rt2549/git/ramp-test/main.py", line 81, in main
+    output = get_signal(shot, args.name)
+  File "/home/rt2549/git/ramp-test/main.py", line 40, in get_signal
+    signal = mast_client.get_signal(shot, name)
+  File "/home/rt2549/git/ramp-test/main.py", line 23, in get_signal
+    signal = client.get(signal_name, shot_num)
+  File "/usr/local/depot/uda-2.6.1/python/pyuda/_client.py", line 170, in get
+    result = cpyuda.get_data(str(signal), str(source))
+  File "pyuda/cpyuda/cpyuda.pyx", line 104, in cpyuda.get_data
+cpyuda.ClientException: No Data waiting at Socket when Data Expected!
+Traceback (most recent call last):
+  File "/home/rt2549/git/ramp-test/main.py", line 87, in <module>
+    main()
+  File "/home/rt2549/git/ramp-test/main.py", line 81, in main
+    output = get_signal(shot, args.name)
+  File "/home/rt2549/git/ramp-test/main.py", line 40, in get_signal
+    signal = mast_client.get_signal(shot, name)
+  File "/home/rt2549/git/ramp-test/main.py", line 24, in get_signal
+    self.reset_connection(client)
+  File "/home/rt2549/git/ramp-test/main.py", line 35, in reset_connection
+    client.get('help::ping()','')
+  File "/usr/local/depot/uda-2.6.1/python/pyuda/_client.py", line 170, in get
+    result = cpyuda.get_data(str(signal), str(source))
+  File "pyuda/cpyuda/cpyuda.pyx", line 104, in cpyuda.get_data
+cpyuda.ClientException: No Data waiting at Socket when Data Expected!
