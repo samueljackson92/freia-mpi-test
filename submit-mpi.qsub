@@ -4,10 +4,10 @@
 #$ -w e
 
 # Choose parallel environment
-# -pe openmpi 1
+#$ -pe mpi 32
 
 # Specify the job name in the queue system
-#$ -N mpi-test
+#$ -N mpi-example
 
 # Start the script in the current working directory
 #$ -cwd
@@ -16,13 +16,9 @@
 #$ -l h_rt=120:00:00
 #$ -l s_rt=120:00:00
 
-# Specify where standard output and error are stored
-##$ -o mpi-test.out
-##$ -e mpi-test.err
-
 # Activate your environment here!
-# source ./mpi-test/bin/activate
 module load python/3.9
+source ./mpi-test/bin/activate
 
 # Run script
-mpirun -np 16 python3 main.py -s shot_files/M9.csv -n rba -e 10000 --image
+mpirun -np 32 python3 mpi-example.py -s shot_files/M9.csv -n ip -e 10000

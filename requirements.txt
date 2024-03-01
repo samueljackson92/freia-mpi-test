@@ -1,3 +1,4 @@
+six
 numpy
 mpi4py
 dask[distributed]

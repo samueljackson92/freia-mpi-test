@@ -160,3 +160,9 @@ cython_debug/
 #.idea/
 
 .vscode
+mpi-test/*
+mpi-example.o*
+mpi-example.e*
+dask-example.o*
+dask-example.e*
+dask-scratch-space
