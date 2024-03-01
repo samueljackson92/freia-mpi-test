@@ -35,7 +35,19 @@ To submit a multi node MPI job using mpi4py run:
 qsub submit-mpi.job
 ```
 
+<<<<<<< HEAD
 To submit a multi-node MPI job using dask run:
 ```sh
 qsub submit-dask.job
 ```
+=======
+To submit s single job run:
+```sh
+qsub submit.job
+```
+
+To submit many jobs run:
+```sh
+./do_submit.sh
+```
+>>>>>>> 2b67764fece37dda16208a083bc632996ea6961f
